@@ -124,6 +124,13 @@ const superAdminItems = [
 ];
 
 function Sidebar() {
+  const location = useLocation();
+  const isSuperAdmin = location.pathname.startsWith("/superadmin");
+  const navItems = isSuperAdmin ? superAdminItems : items;
+  const profile = getRoleProfile("admin");
+  const profileName = isSuperAdmin ? "Super Admin" : profile.name;
+  const profileSub = isSuperAdmin ? profile.email || "super admin account" : profile.email;
+
   return (
     <aside className="sidebar">
 
